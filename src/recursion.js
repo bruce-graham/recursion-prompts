@@ -33,7 +33,6 @@ var sum = function(array) {
 // Example: arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
   var flatArr = [];
-
   array.forEach(function (item) {
     if (Array.isArray(item)) {
       flatArr = flatArr.concat(arraySum(item));
@@ -41,7 +40,6 @@ var arraySum = function(array) {
       flatArr.push(item);
     }
   });
-
   return sum(flatArr);
 };
 
@@ -87,7 +85,6 @@ var range = function(x, y) {
       output.push(y - 1);
       return output;
     }
-
   } else {
     if (x - y < 2) {
       return [];
@@ -135,7 +132,6 @@ var powerOfTwo = function(n) {
   if (n < 1) {
     return false;
   }
-
   return powerOfTwo(n / 2);
 };
 
@@ -144,12 +140,19 @@ var reverse = function(string) {
   if (string.length === 1) {
     return string;
   }
-
-  return reverse(string.slice(1, string.length)) + string.slice(0,1);
+  return reverse(string.slice(1, string.length)) + string.slice(0, 1);
 };
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+  string = string.replace(/ /g, "").toLowerCase();
+  if (string.length <= 1) {
+    return true;
+  }
+  if (string.charAt(0) !== string.charAt(string.length - 1)) {
+    return false;
+  }
+  return palindrome(string.substring(1, string.length - 1));
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
