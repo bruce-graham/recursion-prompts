@@ -198,6 +198,7 @@ var multiply = function(x, y) {
 var divide = function(x, y) {
 };
 
+
 // 14. Find the greatest common divisor (gcd) of two positive numbers.  The GCD of two
 // integers is the greatest integer that divides both x and y with no remainder.
 // Example:  gcd(4,36);  // 4
@@ -212,6 +213,18 @@ var gcd = function(x, y) {
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+  var arr1 = str1.split('');
+  var arr2 = str2.split('');
+
+  if (arr1.shift() !== arr2.shift()) {
+    return false;
+  }
+
+  if (arr1.length === 0 && arr2.length === 0) {
+    return true;
+  }
+
+  return compareStr(arr1.join(''), arr2.join(''));
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
